@@ -10,6 +10,7 @@ use Faker\Factory as Faker;
 use App\Models\Produk;
 use App\Models\ProdukGambar;
 use App\Models\Kategori;
+use App\Models\Kelompok;
 
 class ProdukSeeder extends Seeder
 {
@@ -27,15 +28,23 @@ class ProdukSeeder extends Seeder
             return;
         }
 
+        $kelompokIds = Kelompok::pluck('id')->toArray();
+        if (empty($kelompokIds)) {
+            $this->command->info('Kelompok belum tersedia. Silakan buat kelompok dulu.');
+            return;
+        }
+
         for ($i = 1; $i <= 100; $i++) {
             $kode = 'PRD-' . now()->format('dmy') . '-' . str_pad($i, 4, '0', STR_PAD_LEFT);
 
             $produk = Produk::create([
                 'kategori_id' => $faker->randomElement($kategoriIds),
+                'kelompok_id' => $faker->randomElement($kelompokIds),
                 'kode_produk' => $kode,
                 'nama_produk' => $faker->words(3, true),
                 // 'brand' => $faker->company,
-                'brand' => 'Arumi Galeri',
+                'brand' => 'PERINDAG',
+                'label_halal' => '-',
                 'price' => $faker->numberBetween(57000, 650000),
                 'cost_price' => $faker->numberBetween(50000, 640000),
                 'stock' => $faker->numberBetween(30, 100),
@@ -50,7 +59,7 @@ class ProdukSeeder extends Seeder
             // }
             ProdukGambar::create([
                 'kode_produk' => $produk->kode_produk,
-                'gambar' => 'produk-images/default.jpg'
+                'gambar' => 'produk-images/default.png'
             ]);
         }
 

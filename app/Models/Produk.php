@@ -11,9 +11,11 @@ class Produk extends Model
 
     protected $fillable = [
         'kategori_id',
+        'kelompok_id',
         'kode_produk',
         'nama_produk',
         'brand',
+        'label_halal',
         'price',
         'cost_price',
         'stock',
@@ -24,6 +26,11 @@ class Produk extends Model
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);
+    }
+
+    public function kelompok()
+    {
+        return $this->belongsTo(Kelompok::class);
     }
 
     public function transaksi()

@@ -6,8 +6,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                     <div class="mt-copyright-left text-center">
-                        <p class="text-white">Copyright © 2025. Sistem Informasi Penjualan
-                            {{ $aplikasi->nama_toko }}.</p>
+                        <p class="text-white">Copyright © 2025. Sistem Informasi Industri Kecil Menengah Dinas
+                            Perindustrian dan Perdagangan Kab. Buton</p>
                     </div>
                 </div>
             </div>

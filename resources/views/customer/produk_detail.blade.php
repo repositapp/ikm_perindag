@@ -75,7 +75,12 @@
 
                         <div class="mt-shop-details__product-info-2 mb-25">
                             <ul>
-                                <li>Kategori:<span>{{ $produk->kategori->name }}</span></li>
+                                <li>Kategori:<span>{{ $produk->kategori->name }}</span> &nbsp;
+                                    Brand:<span>{{ $produk->brand }}</span></li>
+                                <li>Nama IKM: <p>{{ $produk->kelompok->nama_ikm }}</p>
+                                </li>
+                                <li>Alamat IKM: <p>{{ $produk->kelompok->alamat }}</p>
+                                </li>
 
                             </ul>
                         </div>

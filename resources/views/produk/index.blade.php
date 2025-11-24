@@ -44,6 +44,7 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 40px">No.</th>
+                            <th>IKM</th>
                             <th>Kategori</th>
                             <th>Nama</th>
                             <th>Brand</th>
@@ -58,6 +59,7 @@
                         @forelse ($produks as $produk)
                             <tr>
                                 <td class="text-center">{{ $produks->firstItem() + $loop->index }}</td>
+                                <td>{{ $produk->kelompok->nama_ikm }}</td>
                                 <td>{{ $produk->kategori->name }}</td>
                                 <td>{{ $produk->nama_produk }}</td>
                                 <td>{{ $produk->brand }}</td>

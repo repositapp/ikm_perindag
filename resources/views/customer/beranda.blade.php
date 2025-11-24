@@ -279,7 +279,7 @@
                     <div class="mt-section-content mb-50">
                         <h3 class="mt-section-title">
                             Produk
-                            <span>Populer</span>
+                            <span>Unggulan</span>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20"
                                     viewBox="0 0 18 20" fill="none">
@@ -289,7 +289,7 @@
                                 </svg>
                             </span>
                         </h3>
-                        <p>Produk Terlaris yang ada di Toko Kami! Temukan Produk Favorit Pelanggan Lain <br> yang Sering di
+                        <p>Produk Unggulan yang ada di Toko Kami! Temukan Produk Favorit Pelanggan Lain <br> yang Sering di
                             Beli.</p>
                     </div>
                 </div>

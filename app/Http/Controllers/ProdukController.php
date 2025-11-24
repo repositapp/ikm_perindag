@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kategori;
+use App\Models\Kelompok;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use App\Models\ProdukGambar;
@@ -31,12 +32,17 @@ class ProdukController extends Controller
                     ->orWhereHas('kategori', function ($q) use ($search) {
                         $q->where('name', 'like', '%' . $search . '%')
                             ->orWhere('slug', 'like', '%' . $search . '%');
+                    })
+
+                    // Relasi ke kategori
+                    ->orWhereHas('kelompok', function ($q) use ($search) {
+                        $q->where('nama_ikm', 'like', '%' . $search . '%')
+                            ->orWhere('alamat', 'like', '%' . $search . '%');
                     });
-            })
-                ->latest();
+            });
         }
 
-        $produks = $produks->paginate(10)->appends(['search' => $search]);
+        $produks = $produks->latest()->paginate(10)->appends(['search' => $search]);
 
         return view('produk.index', compact('produks', 'search'));
     }
@@ -44,15 +50,18 @@ class ProdukController extends Controller
     public function create()
     {
         $kategoris = Kategori::all();
-        return view('produk.create', compact('kategoris'));
+        $kelompoks = Kelompok::all();
+        return view('produk.create', compact('kategoris', 'kelompoks'));
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'kategori_id' => 'required',
+            'kelompok_id' => 'required',
             'nama_produk' => 'required',
             'brand' => 'nullable',
+            'label_halal' => 'nullable',
             'price' => 'required|integer',
             'cost_price' => 'required|integer',
             'stock' => 'required|integer',
@@ -79,9 +88,10 @@ class ProdukController extends Controller
     public function edit(Produk $produk)
     {
         $kategoris = Kategori::all();
+        $kelompoks = Kelompok::all();
         $gambars = $produk->gambar; // relasi gambar
 
-        return view('produk.edit', compact('produk', 'kategoris', 'gambars'));
+        return view('produk.edit', compact('produk', 'kategoris', 'kelompoks', 'gambars'));
     }
 
     public function destroyGambar($id)
@@ -101,8 +111,10 @@ class ProdukController extends Controller
     {
         $validatedData = $request->validate([
             'kategori_id' => 'required',
+            'kelompok_id' => 'required',
             'nama_produk' => 'required',
             'brand' => 'nullable',
+            'label_halal' => 'nullable',
             'price' => 'required|integer',
             'cost_price' => 'required|integer',
             'stock' => 'required|integer',

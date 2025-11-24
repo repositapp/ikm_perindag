@@ -29,7 +29,7 @@
                         <div class="mtheader__bottom-category">
                             <div class="mtheader__logo">
                                 <a href="{{ route('index') }}"><img src="{{ asset('storage/' . $aplikasi->logo) }}"
-                                        alt="Arumi Galeri" width="35%"></a>
+                                        alt="Arumi Galeri" width="50%"></a>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                     <li><a href="{{ route('produk.kategori', 1) }}">Kategori</a></li>
                                     <li><a href="{{ route('produk.all') }}">Produk</a></li>
                                     <li><a href="{{ route('produk.diskon') }}">Diskon</a></li>
-                                    <li><a href="{{ route('produk.populer') }}">Populer</a></li>
+                                    <li><a href="{{ route('produk.populer') }}">Unggulan</a></li>
                                     @auth
                                         <li><a href="{{ route('transaksi.list') }}">Transaksi</a></li>
                                     @endauth

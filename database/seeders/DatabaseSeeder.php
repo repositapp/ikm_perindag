@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Aplikasi;
 use App\Models\Biodata;
 use App\Models\Kategori;
+use App\Models\Kelompok;
 use App\Models\Rekening;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -43,59 +44,59 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Aplikasi::updateOrCreate([
-            'nama_toko' => 'Arumi Galery',
+            'nama_toko' => 'IKM DISPERINDAG',
             'telepon' => '0401-221522',
-            'email' => 'launawolio@gmail.com',
-            'instagram' => '@sentuhan_buton',
-            'tiktok' => '@sentuhan_buton',
-            'alamat' => 'Jl. Bhakti Abri, Kel. Bukit Wolio Indah, Kec. Wolio, Kota Bau-Bau, Sulawesi Tenggara 93713',
-            'maps' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.930680904558!2d122.61416022333478!3d-5.474163351408725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2da4770bb8dc6fc7%3A0x9fdf22ba0c1dcf19!2sArumi%20Galeri!5e0!3m2!1sid!2sid!4v1750669010062!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-            'nama_pemilik' => 'Arumi',
-            'sidebar_lg' => 'Arumi Galery',
-            'sidebar_mini' => 'AG',
+            'email' => 'ikmdisperindagbuton@gmail.com',
+            'instagram' => '-',
+            'tiktok' => '-',
+            'alamat' => 'Jl. Poros Pasar Wajo Wabula, Desa Dongkala, Kec. Ps. Wajo, Kabupaten Buton Sulawesi Tenggara 93754',
+            'maps' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.3423680786336!2d122.87079177572379!3d-5.516101154879823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2da40fc0931ba0d1%3A0xcc8d1c71e9d6a974!2sTAKAWA!5e0!3m2!1sid!2sid!4v1763886109689!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            'nama_pemilik' => 'Dinas Perindustrian dan Perdagangan Kab. Buton',
+            'sidebar_lg' => 'IKM DISPERINDAG',
+            'sidebar_mini' => 'IKM',
             'title_header' => 'Sistem Informasi Penjualan',
-            'logo' => 'aplikasi-images/onlineshop.jpg',
+            'logo' => 'aplikasi-images/onlineshop.png',
         ]);
 
         Kategori::updateOrCreate([
             'name' => 'Sarung Pria',
             'slug' => 'sarung-pria',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Sarung Wanita',
             'slug' => 'sarung-wanita',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Tas Samping',
             'slug' => 'tas-samping',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Ransel',
             'slug' => 'ransel',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Baju Pria',
             'slug' => 'baju-pria',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Baju Wanita',
             'slug' => 'baju-wanita',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Aksesoris Pria',
             'slug' => 'aksesoris-pria',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
         Kategori::updateOrCreate([
             'name' => 'Aksesoris Wanita',
             'slug' => 'aksesoris-wanita',
-            'image_kategori' => 'kategori-images/default.jpg',
+            'image_kategori' => 'kategori-images/default.png',
         ]);
 
         Rekening::updateOrCreate([
@@ -122,6 +123,68 @@ class DatabaseSeeder extends Seeder
             'pemilik' => 'Arumi Galeri',
             'logo_bank' => 'bank-images/mandiri.webp',
         ]);
+
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'KELOMPOK SENTRA IKM KOHOLIMOBONO',
+            'alamat' => 'DESA KOHOLIMOMBONO KECAMATAN WABULA',
+            'nib' => '-',
+            'izin_edar' => 'SERTIFIKAT BPOM RI MD',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'IKM PENGOLAHAN IKAN TERI ASAP ',
+            'alamat' => 'DESA BONEATIRO KECAMATAN KAPONTORI',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'KIOS ANES COFFEE',
+            'alamat' => 'DESA KAONGKEONGKEA KECAMATAN ',
+            'nib' => '-',
+            'izin_edar' => 'SERTIFIKAT P-IRT',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'IKM OMA JAHE',
+            'alamat' => 'DESA WAKOKO KECAMATAN PASARWAJO',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'IKM PENGOLAHAN KACANG METE',
+            'alamat' => 'DESA WAOLE KECAMATAN WOLOWA',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'IKM PENGOLAHAN KEMIRI',
+            'alamat' => 'DESA KAONGKEONGKEA KECAMATAN PASARWAJO',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'IKM AQIL AQILLA JAYA',
+            'alamat' => 'DESA SANGIA MANURU KECAMATAN SIOTAPINA',
+            'nib' => '-',
+            'izin_edar' => 'SERTIFIKAT P-IRT',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'KELOMPOK IKM WAGORONGGO',
+            'alamat' => 'DESA KAONGKEONGKEA KECAMATAN PASARWAJO',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'CEMILAN MAWADDAH',
+            'alamat' => 'DESA WATUMOTOBE KECAMATAN KAPONTORI',
+            'nib' => '-',
+            'izin_edar' => 'SERTIFIKAT P-IRT',
+        ]);
+        Kelompok::updateOrCreate([
+            'nama_ikm' => 'SENTRA IKM TENUN WABULA',
+            'alamat' => 'DESA WABULA KECAMATAN WABULA',
+            'nib' => '-',
+            'izin_edar' => '-',
+        ]);
+
 
         $this->call([
             ProdukSeeder::class,

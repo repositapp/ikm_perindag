@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kategori_id')->index()->constrained();
+            $table->foreignId('kelompok_id')->index()->constrained();
             $table->string('kode_produk')->unique();
             $table->string('nama_produk');
             $table->string('brand')->nullable();
+            $table->string('label_halal')->nullable();
             $table->integer('price');
             $table->integer('cost_price');
             $table->integer('stock');

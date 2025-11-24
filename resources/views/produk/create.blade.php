@@ -34,6 +34,27 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
+                        <label for="kelompok_id" class="col-sm-2 control-label">IKM <span class="text-red">*</span></label>
+
+                        <div class="col-sm-10">
+                            <select class="form-control select2 @error('kelompok_id') is-invalid @enderror" id="kelompok_id"
+                                name="kelompok_id">
+                                <option value="" hidden>-- Choose --</option>
+                                @foreach ($kelompoks as $kelompok)
+                                    <option value="{{ $kelompok->id }}"
+                                        @if (old('kelompok_id') == $kelompok->id) selected="selected" @endif>
+                                        {{ $kelompok->nama_ikm }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('kelompok_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="kategori_id" class="col-sm-2 control-label">Kategori <span
                                 class="text-red">*</span></label>
 
@@ -76,6 +97,20 @@
                             <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand"
                                 name="brand" value="{{ old('brand') }}" placeholder="Brand Produk">
                             @error('brand')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="label_halal" class="col-sm-2 control-label">Label Halal </label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('label_halal') is-invalid @enderror"
+                                id="label_halal" name="label_halal" value="{{ old('label_halal') }}"
+                                placeholder="Label Halal">
+                            @error('label_halal')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -126,8 +161,8 @@
                                 class="text-red">*</span></label>
 
                         <div class="col-sm-10">
-                            <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock"
-                                name="stock" value="{{ old('stock') }}" placeholder="Stok Produk">
+                            <input type="number" class="form-control @error('stock') is-invalid @enderror"
+                                id="stock" name="stock" value="{{ old('stock') }}" placeholder="Stok Produk">
                             @error('stock')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -141,7 +176,8 @@
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <input type="number" class="form-control @error('discount') is-invalid @enderror"
-                                    id="discount" name="discount" value="{{ old('discount', 0) }}" placeholder="Diskon">
+                                    id="discount" name="discount" value="{{ old('discount', 0) }}"
+                                    placeholder="Diskon">
                                 <div class="input-group-addon">
                                     %
                                 </div>
@@ -211,6 +247,7 @@
         $(function() {
             //Initialize Select2 Elements
             $('#kategori_id').select2();
+            $('#kelompok_id').select2();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
