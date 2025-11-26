@@ -157,6 +157,12 @@ class DatabaseSeeder extends Seeder
             'izin_edar' => '-',
         ]);
 
+        $this->call([
+            ProdukSeeder::class,
+            CityDistrictVillageSeeder::class,
+            OngkirSeeder::class,
+        ]);
+
         Produk::updateOrCreate([
             'kategori_id' => 2,
             'kelompok_id' => 1,
@@ -615,13 +621,6 @@ class DatabaseSeeder extends Seeder
         ProdukGambar::updateOrCreate([
             'kode_produk' => 'PRD-231125-0127',
             'gambar' => 'produk-images/27.jpg'
-        ]);
-
-
-        $this->call([
-            ProdukSeeder::class,
-            CityDistrictVillageSeeder::class,
-            OngkirSeeder::class,
         ]);
 
         User::factory(1)->create();
