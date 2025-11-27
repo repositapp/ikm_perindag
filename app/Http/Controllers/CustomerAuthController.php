@@ -64,7 +64,7 @@ class CustomerAuthController extends Controller
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8',
             'telepon'    => 'required|max:20',
-            'village_id' => 'required|exists:villages,id',
+            // 'village_id' => 'required|exists:villages,id',
             'alamat'     => 'nullable|string',
             'kode_pos'   => 'nullable|string|max:10',
         ]);
@@ -90,7 +90,8 @@ class CustomerAuthController extends Controller
             ]);
 
             // Ambil relasi kelurahan → kecamatan → kota
-            $village = Village::with('district.city')->findOrFail($request->village_id);
+            $wilayah = 1;
+            $village = Village::with('district.city')->findOrFail($wilayah);
             $district = $village->district;
             $city = $district->city;
 

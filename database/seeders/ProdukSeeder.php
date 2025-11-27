@@ -21,48 +21,77 @@ class ProdukSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        // pastikan ada kategori terlebih dahulu
+        // Cek kategori dan kelompok
         $kategoriIds = Kategori::pluck('id')->toArray();
-        if (empty($kategoriIds)) {
-            $this->command->info('Kategori belum tersedia. Silakan buat kategori dulu.');
-            return;
-        }
-
         $kelompokIds = Kelompok::pluck('id')->toArray();
-        if (empty($kelompokIds)) {
-            $this->command->info('Kelompok belum tersedia. Silakan buat kelompok dulu.');
+
+        if (empty($kategoriIds) || empty($kelompokIds)) {
+            $this->command->info('Kategori atau Kelompok belum tersedia.');
             return;
         }
 
-        for ($i = 1; $i <= 100; $i++) {
+        // 🎯 Daftar nama produk buatanmu
+        $customNames = [
+            'Kripik Tempe Sagu Crispy',
+            'Makaroni Pipa Bantat NKS',
+            'Aneka Snack Kacang Kemasan Toples 800 ML',
+            'Pisang Kriuk Kering',
+            'Kacang Goreng Bawang',
+            'Keripik Pisang Coklat',
+            'Keripik Ubi Ungu',
+            'Keripik Kentang Keju',
+            'Kacang Toples (Kacang Bawang, Koro Kulit, Koro Balado, Polong Ijo, Telur Atom)',
+            'Keripik Olahan Singkong',
+            'Citruk Spesial Pedas Asin',
+            'Kecimpring Singkong Bawang Daun',
+            'Keripik Nangka',
+            'Kerupuk Kotak Rambak Tahu',
+            'Keripik Pisang Gurih Renyah Original',
+            'Kacang Tanah Caramel Pedas Manis',
+            'Kacang Mete Goreng Patahan',
+            'Keripik Kentang Dieng',
+            'Basreng Bulat Pedas Daun Jeruk',
+            'Kerupuk Putih Rasa Ikan',
+            'Keripik Ikan Wader Crispy',
+            'Kripset Kripik Singkong',
+            'Keripik Pisang Koin Manis dan Gurih',
+            'Pilus Kencur',
+            'Pisang Sale',
+            'Pisang Bollen Bolen',
+            'Kue Kacang',
+        ];
+
+        $total = count($customNames);
+
+        for ($i = 1; $i <= $total; $i++) {
+
+            $name = $customNames[$i - 1];
+
             $kode = 'PRD-' . now()->format('dmy') . '-' . str_pad($i, 4, '0', STR_PAD_LEFT);
 
             $produk = Produk::create([
-                'kategori_id' => $faker->randomElement($kategoriIds),
+                'kategori_id' => 2,
                 'kelompok_id' => $faker->randomElement($kelompokIds),
                 'kode_produk' => $kode,
-                'nama_produk' => $faker->words(3, true),
-                // 'brand' => $faker->company,
+                'nama_produk' => $name,
                 'brand' => 'PERINDAG',
                 'label_halal' => '-',
                 'price' => $faker->numberBetween(57000, 650000),
                 'cost_price' => $faker->numberBetween(50000, 640000),
                 'stock' => $faker->numberBetween(30, 100),
-                'description' => $faker->paragraph(10),
+
+                // 🎯 deskripsi otomatis berdasarkan nama produk
+                'description' => "Produk $name adalah salah satu produk unggulan IKM Kabupaten Buton yang diproduksi dengan kualitas terbaik untuk memenuhi kebutuhan konsumen.",
+
                 'discount' => $faker->randomElement([0, 5, 10, 15, 20]),
             ]);
 
-            // Simulasikan upload beberapa gambar
-            // for ($j = 1; $j <= rand(1, 3); $j++) {
-            //     $fakeImage = $faker->image(storage_path('app/public/produk-images'), 640, 480, null, false);
-
-            // }
             ProdukGambar::create([
                 'kode_produk' => $produk->kode_produk,
                 'gambar' => 'produk-images/default.png'
             ]);
         }
 
-        $this->command->info('✔️  100 Produk beserta gambarnya berhasil dibuat.');
+        $this->command->info("✔️ {$total} Produk berhasil dibuat dengan nama dan deskripsi sesuai keinginan.");
     }
 }

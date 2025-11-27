@@ -26,7 +26,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="mt-checkout-input">
-                                                            <input type="text" placeholder="name"
+                                                            <input type="text" placeholder="Nama Lengkap"
                                                                 class="@error('name') is-invalid @enderror" id="name"
                                                                 name="name" value="{{ old('name') }}">
                                                         </div>
@@ -38,7 +38,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="mt-checkout-input">
-                                                            <input type="email" placeholder="email"
+                                                            <input type="email" placeholder="Email"
                                                                 class="@error('email') is-invalid @enderror" id="email"
                                                                 name="email" value="{{ old('email') }}">
                                                         </div>
@@ -90,7 +90,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    {{-- <div class="col-md-12">
                                                         <div class="mt-checkout-input">
                                                             <select class="@error('village_id') is-invalid @enderror"
                                                                 id="village_id" name="village_id">
@@ -108,7 +108,7 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-12">
                                                         <div class="mt-checkout-input">
                                                             <textarea class="@error('alamat') is-invalid @enderror" rows="1" name="alamat" id="alamat"
