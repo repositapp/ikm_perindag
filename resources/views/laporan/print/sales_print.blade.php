@@ -64,7 +64,7 @@
 
 <body>
     <div class="header">
-        <h4>Laporan Penjualan Winglowing</h4>
+        <h4>Laporan Penjualan Sentra IKM Dinas Perindustrian Kab. Buton</h4>
         <p>Periode:
             @if ($startDate && $endDate)
                 {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} -
