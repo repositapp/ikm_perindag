@@ -127,7 +127,7 @@
                                     @auth('user')
                                         <form action="{{ route('produk.feedback.store') }}" method="POST">
                                             @csrf
-                                            <input type="text" name="produk_id" value="{{ $produk->id }}">
+                                            <input type="hidden" name="produk_id" value="{{ $produk->id }}">
 
                                             <div class="mb-3">
                                                 <label class="form-label">Tipe</label>
