@@ -4,6 +4,7 @@ use App\Http\Controllers\AplikasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
+
 
 
 
@@ -54,6 +56,8 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/keranjang', [ProdukController::class, 'keranjangIndex'])->name('keranjang.index');
     Route::post('/keranjang/tambah', [ProdukController::class, 'addToCart'])->name('keranjang.tambah');
     Route::delete('/keranjang/hapus/{id}', [ProdukController::class, 'hapusKeranjang'])->name('keranjang.hapus');
+    // Feedback
+    Route::post('/produk/feedback', [FeedbackController::class, 'store'])->name('produk.feedback.store');
     // Checkout
     Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout.index');
     Route::post('/checkout', [TransaksiController::class, 'checkoutStore'])->name('checkout.store');
@@ -89,6 +93,11 @@ Route::prefix('admin')->middleware('auth:web')->group(function () {
     Route::put('/transaksi/update/{kode_transaksi}', [TransaksiController::class, 'updateStatus'])->name('transaksi.update');
     Route::put('/transaksi/cancel/{kode_transaksi}', [TransaksiController::class, 'cancel'])->name('transaksi.cancel');
     Route::get('/transaksi/invoice/{kode_transaksi}', [TransaksiController::class, 'cetakInvoice'])->name('transaksi.invoice');
+    // Feedback
+    Route::get('/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+    Route::get('/feedback/{id}', [FeedbackController::class, 'show'])->name('feedback.show');
+    Route::get('/admin/feedback/print', [FeedbackController::class, 'printAll'])->name('feedback.printAll');
+    Route::get('/admin/feedback/{id}/print', [FeedbackController::class, 'printDetail'])->name('feedback.printDetail');
     // Laporan
     Route::prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/products', [LaporanController::class, 'productReport'])->name('products');

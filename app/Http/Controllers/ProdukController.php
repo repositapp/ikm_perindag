@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use App\Models\Kelompok;
 use App\Models\Keranjang;
 use App\Models\Produk;
+use App\Models\ProdukFeedback;
 use App\Models\ProdukGambar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -227,8 +228,11 @@ class ProdukController extends Controller
         $produk = Produk::with('kategori', 'gambar')->where('kode_produk', $kode_produk)->firstOrFail();
         // Produk berdasarkan kategori
         $produkKategori = Produk::with('kategori', 'gambarUtama')->where('kategori_id', $produk->kategori_id)->inRandomOrder()->limit(10)->get();
+        $feedback = ProdukFeedback::with('user')->where('produk_id', $produk->id)
+            ->latest()
+            ->get();
 
-        return view('customer.produk_detail', compact('produk', 'produkKategori'));
+        return view('customer.produk_detail', compact('produk', 'produkKategori', 'feedback'));
     }
 
     public function addToCart(Request $request)

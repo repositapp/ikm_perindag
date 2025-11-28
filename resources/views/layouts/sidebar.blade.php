@@ -42,6 +42,10 @@
             <li class="{{ Request::is('admin/produk*') ? 'active' : '' }}">
                 <a href="{{ route('produk.index') }}"><i class="fa fa-archive"></i><span>Produk</span></a>
             </li>
+            <li class="{{ Request::is('admin/feedback*') ? 'active' : '' }}">
+                <a href="{{ route('feedback.index') }}"><i class="fa fa-commenting-o"></i><span>Kritik &
+                        Saran</span></a>
+            </li>
             <li class="treeview {{ Request::is('admin/transaksi*') ? 'active menu-open' : '' }}">
                 <a href="#">
                     <i class="fa fa-random"></i> <span>Transaksi</span>

@@ -49,6 +49,11 @@ class Produk extends Model
         return $this->hasOne(ProdukGambar::class, 'kode_produk', 'kode_produk')->oldest(); // ambil gambar pertama
     }
 
+    public function feedback()
+    {
+        return $this->hasMany(ProdukFeedback::class);
+    }
+
     public static function boot()
     {
         parent::boot();
