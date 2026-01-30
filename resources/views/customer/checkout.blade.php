@@ -72,7 +72,7 @@
                                         <div class="mt-checkout-input">
                                             <select class="@error('rekening_id') is-invalid @enderror" id="rekening_id"
                                                 name="rekening_id">
-                                                <option hidden>Pilih Rekening</option>
+                                                <option value="" hidden>Pilih Rekening</option>
                                                 @foreach ($rekenings as $rekening)
                                                     <option value="{{ $rekening->id }}"
                                                         @if (old('rekening_id') == $rekening->id) selected="selected" @endif>

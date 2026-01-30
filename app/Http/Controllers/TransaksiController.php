@@ -114,7 +114,7 @@ class TransaksiController extends Controller
     {
         $request->validate([
             'metode_pembayaran' => 'required|in:cod,transfer',
-            'rekening_id' => 'required_if:metode_pembayaran,transfer',
+            'rekening_id' => 'nullable|integer|required_if:metode_pembayaran,transfer',
         ]);
 
         $user = auth()->user();
@@ -145,7 +145,7 @@ class TransaksiController extends Controller
 
         Transaksi::create([
             'user_id' => $user->id,
-            'rekening_id' => $request->rekening_id,
+            'rekening_id' => $request->metode_pembayaran == 'transfer' ? $request->rekening_id : null,
             'metode_pembayaran' => $request->metode_pembayaran,
             'kode_transaksi' => $kode_transaksi,
             'total' => $total,
@@ -167,7 +167,7 @@ class TransaksiController extends Controller
             ]);
         }
 
-        // Keranjang::where('user_id', $user->id)->delete();
+        Keranjang::where('user_id', $user->id)->delete();
 
         if ($request->metode_pembayaran == 'cod') {
             return redirect()->route('transaksi.detail')->with('success', 'Transaksi berhasil!');
