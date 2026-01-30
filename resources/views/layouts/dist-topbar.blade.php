@@ -4,8 +4,20 @@
         <div class="container">
             <div class="mtborder__top-wrapper d-flex align-items-center justify-content-between">
                 <div class="mtheader__top-left">
-                    <a href="#"><i class="fa-light fa-envelope"></i><span><span> {{ $aplikasi->email }}
+                    <a href="tel:{{ $aplikasi->telepon }}"><i class="fa-light fa-user"></i><span><span>
+                                {{ $aplikasi->telepon }}
                             </span></span></a>
+                    <span>
+                        <i class="fa-solid fa-star-sharp"></i>
+                    </span>
+                    @php
+                        $subject = rawurlencode('Konsultasi');
+                        $body = rawurlencode('Halo, saya ingin konsultasi mengenai cara melakukan pemesanan produk');
+                    @endphp
+                    <a href="mailto:{{ $aplikasi->email }}?subject={{ $subject }}&body={{ $body }}">
+                        <i class="fa-light fa-envelope"></i>
+                        <span>{{ $aplikasi->email }}</span>
+                    </a>
                     <span>
                         <i class="fa-solid fa-star-sharp"></i>
                     </span>
