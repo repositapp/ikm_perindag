@@ -170,7 +170,7 @@ class TransaksiController extends Controller
         Keranjang::where('user_id', $user->id)->delete();
 
         if ($request->metode_pembayaran == 'cod') {
-            return redirect()->route('transaksi.detail')->with('success', 'Transaksi berhasil!');
+            return redirect()->route('transaksi.detail', $kode_transaksi)->with('success', 'Transaksi berhasil!');
         } else {
             return redirect()->route('checkout.pay', $kode_transaksi)->with('success', 'Silahkan kirim bukti transfer anda!');
         }
